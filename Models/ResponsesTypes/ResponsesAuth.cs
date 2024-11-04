@@ -1,4 +1,4 @@
-﻿namespace CarApi.Models.ResponsesTypes
+﻿namespace StoreAPI.Models.ResponsesTypes
 {
     public class ResponseSignUp
     {

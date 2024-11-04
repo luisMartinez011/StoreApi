@@ -5,10 +5,11 @@ services:
     container_name: local_pgdb
     restart: always
     ports:
-      - "5432:5432"
+      - "5467:5432"
     environment:
       POSTGRES_USER: Akiraaaaa
       POSTGRES_PASSWORD: root
+      POSTGRES_DB: storeAPI
     volumes:
       - local_pgdata:/var/lib/postgresql/data
   pgadmin:
