@@ -19,39 +19,41 @@ namespace StoreAPI.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        
+
         //private readonly IAuthRepository _authRepository;
         //public AuthController(IAuthRepository authRepository){
         //    _authRepository = authRepository;
         //}
 
-        ///// <summary>
-        ///// SignUp a user. 
-        ///// 
-        ///// </summary>
-        //[HttpPost("SignUp")]
-        //[ProducesResponseType(typeof(ResponseSignUp), (int)HttpStatusCode.OK)]
-        //public async Task<IActionResult> SignUp([FromBody] SignUpDto signUpDto)
-        //{
-        //    try
-        //    {
-        //        Guid userId = await _authRepository.SignUpAsync(signUpDto);
-        //        await _authRepository.AddUser(signUpDto, userId);
+        /// <summary>
+        /// SignUp a user. 
+        /// 
+        /// </summary>
+        [HttpPost("SignUp")]
+        [ProducesResponseType(typeof(ResponseSignUp), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> SignUp([FromBody] SignUpDto signUpDto)
+        {
+            try
+            {
+                Guid userId = await _authRepository.SignUpAsync(signUpDto);
+                await _authRepository.AddUser(signUpDto, userId);
 
-        //        string message = "User succesfully created";
+                string message = "User succesfully created";
 
-        //        ResponseSignUp response = new ResponseSignUp { 
-        //            UserId = userId,
-        //            Message = message
-        //            };
-        //        return Ok(response);
+                ResponseSignUp response = new ResponseSignUp
+                {
+                    UserId = userId,
+                    Message = message
+                };
+                return Ok(response);
 
-        //    }catch(Exception ex)
-        //    {
-        //        throw new ArgumentException(ex.Message);
-        //    }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
 
-        //}
+        }
 
         ///// <summary>
         ///// Confirm User with authCode. The authcode is sent via email, you have 15 minutes until the code expires.
@@ -145,6 +147,6 @@ namespace StoreAPI.Controllers
         //}
 
         // POST api/<AuthController>
-        
+
     }
 }
