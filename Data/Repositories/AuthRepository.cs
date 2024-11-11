@@ -4,56 +4,107 @@ using Microsoft.EntityFrameworkCore;
 using StoreAPI.DTOs;
 using System.Net;
 using System.Text;
+using Microsoft.CodeAnalysis.Scripting;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace StoreAPI.Data.Repositories
 {
-    //public interface IAuthRepository
-    //{
-    //    void ListUserPoolsAsync();
-    //    Task<Guid> SignUpAsync(SignUpDto signUpDto);
-    //    Task AddUser(SignUpDto signUpDto, Guid userSub);
-    //    Task<InitiateAuthResponse> InitiateAuthAsync(LogInDto logInDto);
-    //    Task<bool> ConfirmSignupAsync(string authCode, Guid userId);
-    //    Task<Guid> GetUserId(string username);
-    //    Task<CodeDeliveryDetailsType> ResendConfirmationCodeAsync(Guid userId);
-
-    //}
-
-    public class AuthRepository 
+    public interface IAuthRepository
     {
-        //private readonly AppDbContext _dbContext;
-        //private readonly IAmazonCognitoIdentityProvider _cognitoService;
-        //private readonly string clientId;
-        //private readonly CognitoUserPool _userPool;
+        Task<bool> RegisterUser(string name, string email, string password);
+        Task<string> AuthenticateUser(string email, string password);
 
-        //public AuthRepository(AppDbContext dbContext,
-        //    IAmazonCognitoIdentityProvider cognitoService,
-        //    CognitoUserPool userPool,
-        //    IConfiguration configuration)
-        //{
-        //    _userPool = userPool;
-        //    _dbContext = dbContext;
-        //    _cognitoService = cognitoService;
-        //    //clientId = configuration.GetValue<string>("AWS:AppClientId");
-        //}
+    }
 
-        //public async void ListUserPoolsAsync()
-        //{
-        //    var userPools = new List<UserPoolDescriptionType>();
+    public class AuthRepository : IAuthRepository
+    {
+        private readonly AppDbContext _dbContext;
+        private readonly SymmetricSecurityKey _key;
 
-        //    var userPoolsPaginator = _cognitoService.Paginators.ListUserPools(new ListUserPoolsRequest());
+        public AuthRepository(AppDbContext dbContext,
+            IConfiguration configuration)
+        {
+            _dbContext = dbContext;
+            string _tokenKey = configuration.GetValue<string>("TokenKey");
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenKey));
+        }
 
-        //    await foreach (var response in userPoolsPaginator.Responses)
-        //    {
-        //        userPools.AddRange(response.UserPools);
-        //    }
-        //    Console.WriteLine(userPools);
-        //    //return userPools;
-        //}
+        public async Task<bool> RegisterUser(string name, string email, string password)
+        {
+            try
+            {
+                bool isExist = await _dbContext.Users.AnyAsync(u => u.Email == email);
+                if (isExist)
+                {
+                    return false;
+                }
+
+
+                User user = new User();
+
+                user.Name = name;
+                user.Email = email;
+
+                user.Password = BCrypt.Net.BCrypt.HashPassword(password);
+
+                var res = await _dbContext.Users.AddAsync(user);
+
+                await _dbContext.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        public async Task<string> AuthenticateUser(string email, string password)
+        {
+            try
+            {
+                var user = await _dbContext.Users.FirstOrDefaultAsync(m => m.Email == email);
+
+                if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
+                {
+                    var claims = new List<Claim>
+                    {
+                        new Claim(JwtRegisteredClaimNames.NameId,user.Email)
+                    };
+
+                    var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(claims),
+                        Expires = DateTime.Now.AddDays(500),
+                        SigningCredentials = creds,
+                    };
+
+
+
+                    var tokenHandler = new JwtSecurityTokenHandler();
+
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+
+                    return tokenHandler.WriteToken(token);
+                }
+                throw new Exception("Usuario no existe");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error");
+            }
+
+        }
+
 
         //public async Task<Guid> SignUpAsync(SignUpDto signUpDto)
         //{
-            
+
 
         //    var userAttrsList = new List<AttributeType>() {
         //        new AttributeType { Name = "email", Value = signUpDto.email, },

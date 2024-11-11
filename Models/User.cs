@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace StoreAPI.Models
 {
-    public class User : IdentityUser
+    public class User 
     {
         [Key]
         [Required]
