@@ -10,7 +10,8 @@ namespace StoreAPI.Models
        
         public Guid UserId { get; set; }
         public User User { get; set; }
-        public float TotalAmount { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
+        public double TotalAmount { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         [Required]

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace StoreAPI.Models
@@ -10,6 +11,7 @@ namespace StoreAPI.Models
         public string Description { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public double Price { get; set; }
         [Required]
         public ICollection<CartItem> CartItems { get; set; }

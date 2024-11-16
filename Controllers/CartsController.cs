@@ -29,7 +29,12 @@ namespace StoreAPI.Controllers
         public async Task<ActionResult<Cart>> GetCartByIdUser(Guid idUser)
         {
 
-            var cart = await _context.Carts.FirstOrDefaultAsync(c=> c.UserId == idUser);
+            var cart = await _context.Carts
+                .Include(c => c.CartItems)
+                    .ThenInclude(ci => ci.Product)
+
+                .FirstOrDefaultAsync(c=> c.UserId == idUser)
+                ;
 
             if (cart == null)
             {
