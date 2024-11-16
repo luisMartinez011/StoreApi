@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StoreAPI.Data;
@@ -11,9 +12,11 @@ using StoreAPI.Data;
 namespace StoreAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241111053449_20241111051237_isconfirmedDeleted2")]
+    partial class _20241111051237_isconfirmedDeleted2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,29 +111,29 @@ namespace StoreAPI.Migrations
                         new
                         {
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1628),
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1629),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1827),
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1829),
                             Title = "Frutas"
                         },
                         new
                         {
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1631),
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1632),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1831),
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1831),
                             Title = "Verduras"
                         },
                         new
                         {
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1632),
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1633),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1832),
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1832),
                             Title = "Electrodomesticos"
                         },
                         new
                         {
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1633),
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1633),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1833),
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1833),
                             Title = "Panaderia"
                         });
                 });
@@ -178,10 +181,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 1,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1725),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1906),
                             Description = "Una manzana roja",
-                            Img = "https://www.smartnfinal.com.mx/wp-content/uploads/2016/08/99552-MANZANA-ROJA.jpg",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1725),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1906),
                             Price = 14.99,
                             Title = "Manzana"
                         },
@@ -189,10 +192,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 2,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1729),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1908),
                             Description = "Un platano amarillo",
-                            Img = "https://b3347428.smushcdn.com/3347428/wp-content/uploads/2023/05/PLATANO-ROATAN-ORGANICO-.jpg?lossy=1&strip=1&webp=1",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1729),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1908),
                             Price = 16.989999999999998,
                             Title = "Platano"
                         },
@@ -200,10 +203,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 3,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1730),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1910),
                             Description = "Fresa fresca",
-                            Img = "https://medibangpaint.com/wp-content/uploads/2020/02/IMG_0408.jpg",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1731),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1910),
                             Price = 11.99,
                             Title = "Fresa"
                         },
@@ -211,10 +214,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 4,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1732),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1911),
                             Description = "Apio para ensaladas",
-                            Img = "https://www.superaki.mx/cdn/shop/products/0000000000009_84ef396d-cbfc-4e95-b453-9700a8db5a35_300x300.png?v=1626962900",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1732),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1911),
                             Price = 16.989999999999998,
                             Title = "Apio"
                         },
@@ -222,10 +225,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 5,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1733),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1912),
                             Description = "Lechuga para ensaladas",
-                            Img = "https://cdn.shopify.com/s/files/1/0566/4391/1854/products/0000000000103_f1f0fd0c-8edf-4117-b27a-870487339aa8.png?v=1646608440",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1733),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1913),
                             Price = 18.989999999999998,
                             Title = "Lechuga"
                         },
@@ -233,10 +236,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 6,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1734),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1914),
                             Description = "Zanahorias para ver mejor",
-                            Img = "https://5aldia.cl/wp-content/uploads/2018/03/zanahoria.jpg",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1734),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1914),
                             Price = 13.99,
                             Title = "Zanahoria"
                         },
@@ -244,10 +247,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 7,
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1735),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1915),
                             Description = "Refrigerador con 4 cajones y refrigeracion constante",
-                            Img = "https://cdn.homedepot.com.mx/productos/139687/139687-d.jpg",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1735),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1915),
                             Price = 15656.99,
                             Title = "Refrigerador"
                         },
@@ -255,10 +258,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 8,
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1736),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1916),
                             Description = "Para ver los partidos",
-                            Img = "https://www.elizondoenlinea.com/images/thumbs/20318274_0_390.jpg",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1736),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1917),
                             Price = 14543.99,
                             Title = "Television"
                         },
@@ -266,10 +269,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 9,
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1737),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1918),
                             Description = "Para lavar la ropa",
-                            Img = "https://ss634.liverpool.com.mx/xl/1106074174.jpg",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1738),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1918),
                             Price = 7000.9899999999998,
                             Title = "Lavadora"
                         },
@@ -277,10 +280,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 10,
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1739),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1919),
                             Description = "Dulce pan de muerto",
-                            Img = "https://www.lecreuset.mx/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-mx-master/default/dw21018694/images/cat-recipes/R6-Pan-de-Muerto.jpg?sw=650&sh=650&sm=fit",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1739),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1919),
                             Price = 30.989999999999998,
                             Title = "Pan de Muerto"
                         },
@@ -288,10 +291,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 11,
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1740),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1920),
                             Description = "Muffin de pasas",
-                            Img = "https://www.vitamix.com/content/dam/vitamix/migration/media/recipe/rcppumpkinmuffins/images/pumpkinmuffinsmainjpg.jpg",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1740),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1920),
                             Price = 40.990000000000002,
                             Title = "Muffin"
                         },
@@ -299,10 +302,10 @@ namespace StoreAPI.Migrations
                         {
                             ProductId = 12,
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1741),
+                            CreatedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1921),
                             Description = "Pay de fresa",
-                            Img = "https://t1.uc.ltmcdn.com/es/posts/9/9/4/como_hacer_pie_de_fresa_31499_orig.jpg",
-                            ModifiedAt = new DateTime(2024, 11, 11, 6, 29, 9, 291, DateTimeKind.Utc).AddTicks(1741),
+                            Img = "",
+                            ModifiedAt = new DateTime(2024, 11, 11, 5, 34, 48, 822, DateTimeKind.Utc).AddTicks(1922),
                             Price = 140.99000000000001,
                             Title = "Pay"
                         });

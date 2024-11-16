@@ -15,7 +15,7 @@ namespace StoreAPI.Data.Repositories
     {
         Task<bool> RegisterUser(string name, string email, string password);
         Task<string> AuthenticateUser(string email, string password);
-
+        Task<User> GetUserByEmail(string email);
     }
 
     public class AuthRepository : IAuthRepository
@@ -49,6 +49,8 @@ namespace StoreAPI.Data.Repositories
 
                 user.Password = BCrypt.Net.BCrypt.HashPassword(password);
 
+                Cart cart = new Cart(); // Crear carrito asociado
+                user.Cart = cart;
                 var res = await _dbContext.Users.AddAsync(user);
 
                 await _dbContext.SaveChangesAsync();
@@ -101,6 +103,11 @@ namespace StoreAPI.Data.Repositories
 
         }
 
+        public async Task<User> GetUserByEmail(string email)
+        {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            return user;
+        }
 
         //public async Task<Guid> SignUpAsync(SignUpDto signUpDto)
         //{

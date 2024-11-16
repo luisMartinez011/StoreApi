@@ -24,7 +24,7 @@ namespace StoreAPI.Controllers
 
         // GET: api/Categories
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
             return await _context.Categories.ToListAsync();

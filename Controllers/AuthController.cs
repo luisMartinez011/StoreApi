@@ -12,6 +12,7 @@ using System.Collections;
 using System.Net;
 using Amazon.Runtime.Internal;
 using Microsoft.AspNetCore.Authentication;
+using NuGet.Common;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,8 +34,15 @@ namespace StoreAPI.Controllers
         {
             
             bool registrationStatus = await _authRepository.RegisterUser(name, email, password);
-                
-            return Ok(registrationStatus);
+            if (registrationStatus) {
+                string token = await _authRepository.AuthenticateUser(email, password);
+               
+            User user = await _authRepository.GetUserByEmail(email);
+                var response = new { token = token, name = user.Name };
+                return Ok(response);
+            }
+            return BadRequest("Error en la solicitud");
+            
         }
 
         [HttpPost("LogIn")]
@@ -42,7 +50,9 @@ namespace StoreAPI.Controllers
         {
 
             string token = await _authRepository.AuthenticateUser(email, password);
-            return Ok(token);
+            User user = await _authRepository.GetUserByEmail(email);
+            var response = new { token = token, name=user.Name, id=user.UserId };
+            return Ok(response);
         }
 
         /// <summary>

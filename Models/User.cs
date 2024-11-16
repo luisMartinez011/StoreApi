@@ -11,7 +11,6 @@ namespace StoreAPI.Models
     {
         [Key]
         [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid UserId { get; set; }
 
         [Required]
@@ -28,9 +27,6 @@ namespace StoreAPI.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         [Required]
         public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
-        [Required]
-        public Boolean IsConfirmed { get; set; } = false;
-
 
     }
 }
